@@ -1,0 +1,280 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "DataFrame 1:\n",
+      "   ID   Name  Marks\n",
+      "0   1  Rahul     85\n",
+      "1   2  Sneha     92\n",
+      "2   3   Amit     76\n",
+      "\n",
+      "DataFrame 2:\n",
+      "   ID    Name  Marks\n",
+      "0   4   Priya     88\n",
+      "1   5  Roshan     95\n",
+      "\n",
+      "Concatenated DataFrame:\n",
+      "   ID    Name  Marks\n",
+      "0   1   Rahul     85\n",
+      "1   2   Sneha     92\n",
+      "2   3    Amit     76\n",
+      "3   4   Priya     88\n",
+      "4   5  Roshan     95\n",
+      "\n",
+      "Students with Marks greater than 80:\n",
+      "   ID    Name  Marks\n",
+      "0   1   Rahul     85\n",
+      "1   2   Sneha     92\n",
+      "3   4   Priya     88\n",
+      "4   5  Roshan     95\n",
+      "\n",
+      "DataFrame after adding grade column:\n",
+      "   ID    Name  Marks Grade\n",
+      "0   1   Rahul     85     B\n",
+      "1   2   Sneha     92     A\n",
+      "2   3    Amit     76     C\n",
+      "3   4   Priya     88     B\n",
+      "4   5  Roshan     95     A\n"
+     ]
+    }
+   ],
+   "source": [
+    " import pandas as pd\n",
+    "data1 = {\n",
+    "    \"ID\":[1,2,3],\n",
+    "    \"Name\":[\"Rahul\",\"Sneha\",\"Amit\"],\n",
+    "    \"Marks\":[85,92,76]\n",
+    "}\n",
+    "data2 = {\n",
+    "    \"ID\":[4,5],\n",
+    "    \"Name\":[\"Priya\",\"Roshan\"],\n",
+    "    \"Marks\":[88,95]\n",
+    "}\n",
+    "df1 = pd.DataFrame(data1)\n",
+    "df2 = pd.DataFrame(data2)\n",
+    "print(\"DataFrame 1:\")\n",
+    "print(df1)\n",
+    "print(\"\\nDataFrame 2:\")\n",
+    "print(df2)\n",
+    "\n",
+    "df_concat = pd.concat([df1,df2],ignore_index=True)\n",
+    "print(\"\\nConcatenated DataFrame:\")\n",
+    "print(df_concat)\n",
+    "\n",
+    "print(\"\\nStudents with Marks greater than 80:\")\n",
+    "print(df_concat[df_concat[\"Marks\"]>80])\n",
+    "\n",
+    "df_concat[\"Grade\"] = [\"B\",\"A\",\"C\",\"B\",\"A\"]\n",
+    "print(\"\\nDataFrame after adding grade column:\")\n",
+    "print(df_concat)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "Concatenated DataFrame:\n",
+      "   ID  Names  Marks    Name\n",
+      "0   1  Rahul     85     NaN\n",
+      "1   2  Sneha     92     NaN\n",
+      "2   3   Amit     76     NaN\n",
+      "3   4    NaN     88   Priya\n",
+      "4   5    NaN     95  Roshan\n",
+      "\n",
+      "Students with marks greater than 80:\n",
+      "   ID  Names  Marks    Name\n",
+      "0   1  Rahul     85     NaN\n",
+      "1   2  Sneha     92     NaN\n",
+      "3   4    NaN     88   Priya\n",
+      "4   5    NaN     95  Roshan\n",
+      "\n",
+      "DataFrame after Adding Grade column:\n",
+      "   ID  Names  Marks    Name Grade\n",
+      "0   1  Rahul     85     NaN     B\n",
+      "1   2  Sneha     92     NaN     A\n",
+      "2   3   Amit     76     NaN     C\n",
+      "3   4    NaN     88   Priya     B\n",
+      "4   5    NaN     95  Roshan     A\n"
+     ]
+    }
+   ],
+   "source": [
+    "df_concat =pd.concat([df1,df2],ignore_index=True)\n",
+    "print(\"\\nConcatenated DataFrame:\")\n",
+    "print(df_concat)\n",
+    "\n",
+    "print(\"\\nStudents with Marks greater than 80:\")\n",
+    "print(df_concat[df_concat[\"Marks\"]>80])\n",
+    "\n",
+    "df_concat[\"Grade\"] = [\"B\",\"A\",\"C\",\"B\",\"A\"]\n",
+    "print(\"\\nDataFrame after Adding Grade Column:\")\n",
+    "print(df_concat)\n",
+    "            "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "DataFrame 1:\n",
+      "   ID   Name  Marks\n",
+      "0   1  Rahul     85\n",
+      "1   2  Sneha     92\n",
+      "2   3   Amit     76\n",
+      "\n",
+      "DataFrame 2:\n",
+      "   ID    Name  Marks\n",
+      "0   4   Priya     88\n",
+      "1   5  Roshan     95\n",
+      "\n",
+      "Concatenated DataFrame:\n",
+      "   ID    Name  Marks\n",
+      "0   1   Rahul     85\n",
+      "1   2   Sneha     92\n",
+      "2   3    Amit     76\n",
+      "3   4   Priya     88\n",
+      "4   5  Roshan     95\n",
+      "\n",
+      "Students with Marks greater than 80:\n",
+      "   ID    Name  Marks\n",
+      "0   1   Rahul     85\n",
+      "1   2   Sneha     92\n",
+      "3   4   Priya     88\n",
+      "4   5  Roshan     95\n",
+      "\n",
+      "DataFrame after adding grade column:\n",
+      "   ID    Name  Marks Grade\n",
+      "0   1   Rahul     85     B\n",
+      "1   2   Sneha     92     A\n",
+      "2   3    Amit     76     C\n",
+      "3   4   Priya     88     B\n",
+      "4   5  Roshan     95     A\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "    import pandas as pd\n",
+    "data1 = {\n",
+    "    \"ID\":[1,2,3],\n",
+    "    \"Name\":[\"Rahul\",\"Sneha\",\"Amit\"],\n",
+    "    \"Marks\":[85,92,76]\n",
+    "}\n",
+    "data2 = {\n",
+    "    \"ID\":[4,5],\n",
+    "    \"Name\":[\"Priya\",\"Roshan\"],\n",
+    "    \"Marks\":[88,95]\n",
+    "}\n",
+    "df1 = pd.DataFrame(data1)\n",
+    "df2 = pd.DataFrame(data2)\n",
+    "print(\"DataFrame 1:\")\n",
+    "print(df1)\n",
+    "print(\"\\nDataFrame 2:\")\n",
+    "print(df2)\n",
+    "\n",
+    "df_concat = pd.concat([df1,df2],ignore_index=True)\n",
+    "print(\"\\nConcatenated DataFrame:\")\n",
+    "print(df_concat)\n",
+    "\n",
+    "print(\"\\nStudents with Marks greater than 80:\")\n",
+    "print(df_concat[df_concat[\"Marks\"]>80])\n",
+    "\n",
+    "df_concat[\"Grade\"] = [\"B\",\"A\",\"C\",\"B\",\"A\"]\n",
+    "print(\"\\nDataFrame after adding grade column:\")\n",
+    "print(df_concat)         "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   ID    Name  Marks Grade  Marks2\n",
+      "0   1   Rahul     85     B      90\n",
+      "1   2   Sneha     92     A      30\n",
+      "2   3    Amit     76     C      50\n",
+      "3   4   Priya     88     B      80\n",
+      "4   5  Roshan     95     A      89\n"
+     ]
+    }
+   ],
+   "source": [
+    "df_concat[\"Marks2\"]=[90,30,50,80,89]\n",
+    "print(df_concat)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   ID    Name  Marks Grade  Marks2  total\n",
+      "0   1   Rahul     85     B      90    175\n",
+      "1   2   Sneha     92     A      30    122\n",
+      "2   3    Amit     76     C      50    126\n",
+      "3   4   Priya     88     B      80    168\n",
+      "4   5  Roshan     95     A      89    184\n"
+     ]
+    }
+   ],
+   "source": [
+    "df_concat[\"total\"]=df_concat[\"Marks\"]+df_concat[\"Marks2\"]\n",
+    "print(df_concat)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
